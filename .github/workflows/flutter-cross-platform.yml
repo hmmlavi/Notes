@@ -49,7 +49,7 @@ jobs:
           git -C .. add flutter_app/android flutter_app/windows
           if (-not (git -C .. diff --cached --quiet)) {
             git -C .. commit -m "build: generate Flutter platform runners [skip ci]"
-            git -C .. push
+            git -C .. push origin HEAD:main
           }
 
   real-device-screenshot:
@@ -76,7 +76,7 @@ jobs:
           profile: pixel_6
           script: |
             adb install -r flutter_app/build/app/outputs/flutter-apk/app-debug.apk
-            adb shell am start -n com.lavi.notes_by_lavi/.MainActivity
+            adb shell monkey -p com.example.notes_by_lavi 1
             sleep 8
             mkdir -p docs/screenshots
             adb shell screencap -p /sdcard/notes-home.png
@@ -89,7 +89,7 @@ jobs:
           git add docs/screenshots/home-android.png
           if ! git diff --cached --quiet; then
             git commit -m "docs: add actual Android emulator screenshot [skip ci]"
-            git push
+            git push origin HEAD:main
           fi
       - uses: actions/upload-artifact@v4
         with:
