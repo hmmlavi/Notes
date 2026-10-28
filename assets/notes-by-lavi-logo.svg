@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+<title>Notes By Lavi</title>
+<defs>
+  <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A9A5FF"/><stop offset="1" stop-color="#6D63D9"/></linearGradient>
+  <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFD98A"/><stop offset="1" stop-color="#FFB85C"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="9" stdDeviation="8" flood-color="#443C91" flood-opacity=".22"/></filter>
+</defs>
+<rect x="18" y="18" width="220" height="220" rx="62" fill="#F5F3FF"/>
+<g filter="url(#shadow)" transform="rotate(-5 128 128)">
+  <rect x="58" y="44" width="139" height="169" rx="22" fill="url(#paper)"/>
+  <path d="M91 91h72M91 113h72M91 135h49" stroke="#FFF" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+  <path d="M143 166l31-31 20 20-31 31-25 6z" fill="url(#accent)" stroke="#FFF" stroke-width="4" stroke-linejoin="round"/>
+  <path d="M143 166l20 20" stroke="#B16B32" stroke-width="4"/>
+</g>
+<circle cx="190" cy="62" r="18" fill="#FFE4A5"/>
+<path d="M190 50v24M178 62h24" stroke="#8B68C8" stroke-width="5" stroke-linecap="round"/>
+</svg>
