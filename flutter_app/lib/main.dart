@@ -450,12 +450,62 @@ class _NotesHomeState extends State<NotesHome> {
                                                 Expanded(
                                                   child: Text(note.title.isEmpty ? 'Untitled note' : note.title, maxLines: 1, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: cardText)),
                                                 ),
-                                                IconButton(
-                                                  visualDensity: VisualDensity.compact,
-                                                  tooltip: section == 'Trash' ? 'Restore' : 'Archive',
-                                                  onPressed: () => toggleArchive(note),
-                                                  icon: Icon(section == 'Trash' ? Icons.restore : section == 'Archive' ? Icons.unarchive : Icons.archive_outlined, size: 18, color: brandPurple),
-                                                ),
+                                                if (section == 'Trash')
+                                                  IconButton(
+                                                    visualDensity: VisualDensity.compact,
+                                                    tooltip: 'Restore',
+                                                    onPressed: () => toggleArchive(note),
+                                                    icon: const Icon(Icons.restore, size: 18, color: brandPurple),
+                                                  )
+                                                else
+                                                  PopupMenuButton<String>(
+                                                    tooltip: 'Note actions',
+                                                    icon: Icon(
+                                                      section == 'Archive' ? Icons.unarchive_outlined : Icons.more_horiz,
+                                                      size: 20,
+                                                      color: brandPurple,
+                                                    ),
+                                                    onSelected: (action) async {
+                                                      if (action == 'archive') {
+                                                        await toggleArchive(note);
+                                                      } else if (action == 'trash') {
+                                                        note.trashed = true;
+                                                        note.archived = false;
+                                                        await persistAndRefresh();
+                                                      } else if (action == 'restore') {
+                                                        note.archived = false;
+                                                        await persistAndRefresh();
+                                                      }
+                                                    },
+                                                    itemBuilder: (context) => [
+                                                      if (section == 'Archive')
+                                                        const PopupMenuItem(
+                                                          value: 'restore',
+                                                          child: ListTile(
+                                                            leading: Icon(Icons.unarchive_outlined),
+                                                            title: Text('Restore from archive'),
+                                                            contentPadding: EdgeInsets.zero,
+                                                          ),
+                                                        )
+                                                      else
+                                                        const PopupMenuItem(
+                                                          value: 'archive',
+                                                          child: ListTile(
+                                                            leading: Icon(Icons.archive_outlined),
+                                                            title: Text('Archive note'),
+                                                            contentPadding: EdgeInsets.zero,
+                                                          ),
+                                                        ),
+                                                      const PopupMenuItem(
+                                                        value: 'trash',
+                                                        child: ListTile(
+                                                          leading: Icon(Icons.delete_outline),
+                                                          title: Text('Move to Trash'),
+                                                          contentPadding: EdgeInsets.zero,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 if (section != 'Trash')
                                                   IconButton(
                                                     visualDensity: VisualDensity.compact,
