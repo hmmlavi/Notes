@@ -30,7 +30,7 @@
 
 The current codebase is an **early functional preview**, not the complete long-term vision. The features below are labelled honestly so you can see what works today and what is still planned.
 
-## 🎯 Features available now
+## 📱 Real app screenshots\n\nThe screenshots below are captured from the running Android app on an Android emulator by GitHub Actions — they are not mockups. The screenshot is added automatically after the emulator job succeeds.\n\n![Notes By Lavi running on Android](docs/screenshots/home-android.png)\n\n> If this image is not present yet, the first automated emulator run has not completed successfully.\n\n## 🎯 Features available now
 
 | Feature | What it does |
 |---|---|
@@ -115,7 +115,7 @@ adb install -r app/build/outputs/apk/debug/app-debug.apk
 
 This repository currently targets **native Android**, so Kotlin is a sensible choice: it integrates directly with Android APIs and Jetpack Compose. Adding unrelated languages would not automatically make the app better. A proper Windows version is a separate milestone; we can evaluate Kotlin Multiplatform or Flutter/Dart when implementing that platform instead of pretending this Android-only code already runs on Windows.
 
-## 🧪 Build checks
+## 🖥️ Windows desktop\n\nThe cross-platform workflow builds a Windows desktop bundle. Download the `Notes-By-Lavi-Windows-Desktop` artifact from the successful workflow run, extract the full folder, and run `notes_by_lavi.exe`. Keep the DLLs and data files beside the executable. This is an early preview and still needs testing on a Windows PC.\n\n## 🧪 Build checks
 
 GitHub Actions is configured to run the Android test/build workflow and upload a debug APK artifact. A successful CI build confirms that the project compiles in that environment; it does **not** replace testing on real devices or prove that every UI flow is bug-free.
 
@@ -148,7 +148,7 @@ Bug reports, reproducible steps, accessibility feedback and thoughtful feature p
 - **Stability:** Initial functionality; real-device testing still required
 - **Backup/export:** Not available yet
 - **Cloud sync:** Not available yet
-- **Windows app:** Not available yet
+- **Windows app:** Flutter desktop build is being added; CI provides a Windows bundle when the workflow passes
 
 See [CHANGELOG.md](CHANGELOG.md) for changes.
 
