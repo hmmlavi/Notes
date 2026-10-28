@@ -8,7 +8,7 @@ class Note {
  Note({required this.id,this.title='',this.body='',this.tags='',this.pinned=false,this.archived=false,this.trashed=false,required this.updated});
  final String id; String title,body,tags; bool pinned,archived,trashed; DateTime updated;
  Map<String,dynamic> toJson()=>{'id':id,'title':title,'body':body,'tags':tags,'pinned':pinned,'archived':archived,'trashed':trashed,'updated':updated.toIso8601String()};
- factory Note.fromJson(Map<String,dynamic> j)=>Note(id:j['id'] as String,title:j['title'] as String???'',body:j['body'] as String???'',tags:j['tags'] as String???'',pinned:j['pinned'] as bool???false,archived:j['archived'] as bool???false,trashed:j['trashed'] as bool???false,updated:DateTime.tryParse(j['updated'] as String???'')??DateTime.now());
+ factory Note.fromJson(Map<String,dynamic> j)=>Note(id:j['id'] as String,title:j['title'] as String? ??'',body:j['body'] as String? ??'',tags:j['tags'] as String? ??'',pinned:j['pinned'] as bool? ??false,archived:j['archived'] as bool? ??false,trashed:j['trashed'] as bool? ??false,updated:DateTime.tryParse(j['updated'] as String? ??'')??DateTime.now());
 }
 class NotesApp extends StatefulWidget {const NotesApp({super.key}); @override State<NotesApp> createState()=>_NotesAppState();}
 class _NotesAppState extends State<NotesApp>{
