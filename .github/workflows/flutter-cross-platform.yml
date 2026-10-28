@@ -24,6 +24,10 @@ jobs:
           cache: true
       - name: Generate native Android and Windows runners
         run: flutter create --platforms=android,windows --project-name notes_by_lavi .
+      - name: Disable flaky Kotlin incremental cache on Windows runners
+        shell: pwsh
+        run: Add-Content android/gradle.properties "
+kotlin.incremental=false"
       - run: flutter pub get
       - name: Analyze
         run: flutter analyze
@@ -71,6 +75,8 @@ jobs:
         working-directory: flutter_app
         run: |
           flutter pub get
+          Add-Content android/gradle.properties "
+kotlin.incremental=false"
           flutter build apk --debug
       - uses: reactivecircus/android-emulator-runner@v2
         with:
