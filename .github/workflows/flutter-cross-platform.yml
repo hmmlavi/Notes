@@ -1,0 +1,51 @@
+name: Flutter Android and Windows builds
+on:
+  push:
+    branches: [main]
+    paths: ['flutter_app/**', '.github/workflows/flutter-cross-platform.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: windows-latest
+    defaults:
+      run:
+        working-directory: flutter_app
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate native Android and Windows runners
+        run: flutter create --platforms=android,windows --project-name notes_by_lavi .
+      - run: flutter pub get
+      - name: Analyze
+        run: flutter analyze
+      - name: Test
+        run: flutter test
+      - name: Build release APK
+        run: flutter build apk --release
+      - name: Build Windows desktop
+        run: flutter build windows --release
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Notes-By-Lavi-Android-APK
+          path: flutter_app/build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Notes-By-Lavi-Windows-Desktop
+          path: flutter_app/build/windows/x64/runner/Release/**
+          retention-days: 30
+      - name: Save generated platform runners
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add android windows
+          if (-not (git diff --cached --quiet)) {
+            git commit -m "build: generate Flutter platform runners [skip ci]"
+            git push
+          }
