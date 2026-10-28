@@ -1,212 +1,206 @@
 <div align="center">
 
-<img src="assets/notes-by-lavi-logo.svg" alt="Notes By Lavi logo" width="112" />
+<img src="assets/notes-by-lavi-logo.svg" alt="Notes By Lavi app icon" width="112" />
 
 # Notes By Lavi
 
-### Your thoughts deserve a little space.
+### A little space for big ideas.
 
-A calm, personal place to capture ideas, make sense of your day, and keep the important things close.
+Capture thoughts, collect little plans, and keep everyday notes in one calm workspace — designed with soft clay-inspired surfaces and a simple, distraction-light layout.
 
 <p>
-  <a href="https://github.com/hmmlavi/Notes/actions"><img src="https://img.shields.io/github/actions/workflow/status/hmmlavi/Notes/flutter-cross-platform.yml?branch=main&label=build&logo=githubactions&logoColor=white" alt="Build status"></a>
-  <img src="https://img.shields.io/badge/Android-early%20preview-3DDC84?logo=android&logoColor=white" alt="Android preview">
-  <img src="https://img.shields.io/badge/Windows-in%20development-0078D4?logo=windows&logoColor=white" alt="Windows in development">
+  <a href="https://github.com/hmmlavi/Notes/actions/workflows/flutter-cross-platform.yml"><img src="https://img.shields.io/github/actions/workflow/status/hmmlavi/Notes/flutter-cross-platform.yml?branch=main&label=Cross-platform%20build&logo=githubactions&logoColor=white" alt="Cross-platform build status"></a>
+  <img src="https://img.shields.io/badge/Android-preview-3DDC84?logo=android&logoColor=white" alt="Android preview">
+  <img src="https://img.shields.io/badge/Windows-preview%20in%20progress-0078D4?logo=windows&logoColor=white" alt="Windows preview in progress">
+  <img src="https://img.shields.io/badge/Flutter-Dart-02569B?logo=flutter&logoColor=white" alt="Flutter and Dart">
   <img src="https://img.shields.io/badge/license-MIT-7569D9" alt="MIT License">
 </p>
 
-[**Get the app**](https://github.com/hmmlavi/Notes/releases) · [See the roadmap](#-whats-next) · [Report a bug](https://github.com/hmmlavi/Notes/issues) · [Suggest an idea](https://github.com/hmmlavi/Notes/discussions)
+[**Get the latest release**](https://github.com/hmmlavi/Notes/releases) · [Roadmap](#-the-roadmap) · [Report a bug](https://github.com/hmmlavi/Notes/issues/new) · [Share an idea](https://github.com/hmmlavi/Notes/discussions)
 
 </div>
 
 ---
 
-## 🌱 Meet your new thinking space
+## 💭 Why Notes By Lavi?
 
-Some notes are quick reminders. Some are ideas you don't want to lose. Some start as one sentence and turn into something bigger.
+A useful note app should get out of your way. Whether it's a sudden idea, a small to-do, or something you want to remember later, Notes By Lavi is being built around three simple principles:
 
-**Notes By Lavi is being built to make capturing those thoughts feel simple.** The focus is a clean interface, quick access to your notes, and local-first storage.
+- **Quick to use** — get a thought down without fighting the interface.
+- **Easy to find** — search notes and keep important ones pinned.
+- **Comfortable to look at** — a light theme, true-black dark canvas, and soft rounded surfaces.
 
-> **A quick note about the current stage:** this is an early preview, not the finished version. This README separates what exists today from what is still being built.
+> **Current status:** this is an early preview. The project has an original native Android implementation and a newer Flutter/Dart app being developed for Android and Windows. Features marked as planned are not available yet.
 
-## 👀 Take a look
+## 👀 A look inside
 
-<!-- The Android emulator workflow adds a real screenshot here after it successfully launches the app. -->
 <p align="center">
   <img src="docs/screenshots/home-android.png" alt="Notes By Lavi running in the Android emulator" width="300">
 </p>
-<p align="center"><sub>Real app screenshot from the Android emulator. If the image does not appear yet, the screenshot workflow has not completed successfully.</sub></p>
+<p align="center"><sub>Captured from the Android emulator by the project workflow, when the screenshot job succeeds.</sub></p>
 
-## ✨ What you can do today
+If the image is not visible yet, the automated screenshot has not been committed successfully. No mockup is presented as a real app screenshot.
+
+## ✨ Features in the current preview
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### ✍️ Capture a thought
-Create a note and edit its title and text.
+### ✍️ Write
+Create notes with a title, body, and comma-separated tags.
 
-### 🔎 Find it later
-Search across note titles, body text, and tags.
+### 🔎 Search
+Find text across note titles, note bodies, and tags.
 
-### 📌 Keep it close
-Pin important notes so they appear before other notes.
+### 📌 Pin
+Keep important notes near the top of your list.
 
 </td>
 <td width="50%" valign="top">
 
-### 🏷️ Add a little structure
-Use comma-separated tags to group related thoughts.
+### 🗂️ Archive
+Move notes out of your main list without losing them.
 
-### 🗂️ Clear the clutter
-Archive notes you want to keep out of the main list.
+### ♻️ Trash & restore
+Recover trashed notes or permanently remove them from Trash.
 
-### ♻️ Recover a note
-Move notes to Trash and restore them when needed.
+### 🎨 Choose a look
+Use a bright light appearance or a true-black AMOLED canvas.
 
 </td>
 </tr>
 </table>
 
-### 🎨 Made to feel comfortable
+**Storage note:** the Flutter preview currently uses local app preferences to store note data. It is a lightweight prototype storage layer, not yet the robust database system planned for a mature notes app. Keep a separate copy of important information.
 
-- **Light appearance** for a bright, uncluttered workspace.
-- **AMOLED dark appearance** with a true-black canvas option.
-- **Soft, rounded surfaces** and gentle shadows in the evolving UI.
-- **Responsive layout work** toward a better experience on phones and wider desktop screens.
-
-*The exact experience is still being refined, and some of these design improvements are part of the newer Flutter preview rather than the original Kotlin build.*
-
-## 🛣️ What's next?
-
-The bigger vision is an easy-to-use notes app that works across devices. These items are goals, not promises that the features are already available.
-
-- [ ] **A better editor** — formatting, headings, lists, and checklists.
-- [ ] **Your own organisation system** — folders, nested collections, colours, and templates.
-- [ ] **Reminders & planning** — tasks, due dates, and a calendar view.
-- [ ] **Files with your notes** — images, documents, attachments, and drawing.
-- [ ] **Take your data with you** — Markdown/TXT/JSON export and reliable backups.
-- [ ] **Windows desktop app** — a shared experience across phone and PC.
-- [ ] **Optional sync** — a carefully designed way to access notes on multiple devices.
-- [ ] **Writing help** — optional grammar suggestions that never silently rewrite your words.
-- [ ] **More accessibility and testing** — keyboard support, UI tests, and real-device checks.
-
-## 🔐 Your notes, your data
-
-The project is being developed with local-first use in mind. Please read these limitations before relying on the preview:
-
-- The original Android app stores notes locally in the app's private storage.
-- Account login and cloud sync are **not available yet**.
-- Built-in export and backup are **not available yet**.
-- End-to-end encryption has **not been implemented or claimed**.
-- Uninstalling an app can remove its local data.
-
-**Please keep another copy of anything important.** Do not use this preview as the only place where important notes are stored.
-
-## 📲 Download or try it
+## 📥 Try it
 
 <div align="center">
 
-### Want to try the latest build?
-
-[![Open releases](https://img.shields.io/badge/Download-check%20Releases-7569D9?style=for-the-badge&logo=github)](https://github.com/hmmlavi/Notes/releases)
-[![Builds](https://img.shields.io/badge/Builds-GitHub%20Actions-24292F?style=for-the-badge&logo=githubactions)](https://github.com/hmmlavi/Notes/actions)
+[![Releases](https://img.shields.io/badge/Download-Open%20Releases-7569D9?style=for-the-badge&logo=github)](https://github.com/hmmlavi/Notes/releases)
+[![Actions](https://img.shields.io/badge/Builds-View%20GitHub%20Actions-24292F?style=for-the-badge&logo=githubactions)](https://github.com/hmmlavi/Notes/actions)
 
 </div>
 
-1. Open **Releases** and check whether a release has been published.
-2. If an APK is attached, download it to your Android phone.
-3. Open the downloaded file and follow Android's installation prompt. You may need to allow installation from your browser or file manager.
-4. If no release is available yet, the latest build may still be running in GitHub Actions.
+1. Open **Releases** and check for the latest successful preview.
+2. If an APK is attached, download it on your Android phone.
+3. Open the APK and follow Android's installation instructions. Android may ask you to allow installs from your browser or file manager.
+4. If no release is available, open **Actions** and check whether a build is still running.
 
-**Windows:** the desktop build is in development. When a successful Windows artifact is available, download the complete artifact folder and keep its supporting DLLs and files together with the executable.
+**Windows:** the Windows desktop target is being built and verified. Wait for a successful workflow and a Windows artifact before treating the PC version as ready. Keep the downloaded release folder intact; the app may need files beside its executable.
 
-## 🧑‍🔧 Build from source
+## 🧭 The roadmap
 
-### Android — original native app
+These are planned improvements, not claims about features already shipped.
 
-The original Android implementation uses Kotlin, Jetpack Compose, Gradle, and local SQLite storage.
+- [ ] **A richer editor** — headings, bold/italic, lists, checklists, links, and undo/redo.
+- [ ] **Flexible organisation** — custom folders, nested groups, colours, and templates.
+- [ ] **Tasks and reminders** — due dates, recurring reminders, and calendar views.
+- [ ] **Attachments** — images, documents, audio, and a drawing canvas.
+- [ ] **Reliable backup and export** — Markdown, TXT, JSON, and attachments.
+- [ ] **Windows desktop release** — a polished and tested PC experience.
+- [ ] **Optional cross-device sync** — a transparent sync model with conflict handling.
+- [ ] **Writing assistance** — optional suggestions that never silently replace your original words.
+- [ ] **Privacy and accessibility improvements** — clearer data controls, keyboard support, and more device testing.
 
-1. Install Android Studio and JDK 17.
-2. Clone this repository.
-3. Open the root Android project in Android Studio.
-4. Let Gradle sync, then run the `app` configuration on an emulator or connected phone.
+## 🔐 Privacy, storage, and limitations
 
-### Flutter — cross-platform preview
+We want your notes to remain yours. Here is what the current preview does — and does not — provide:
 
-The `flutter_app/` directory contains the newer Flutter/Dart app being developed toward Android and Windows.
+| Capability | Current status |
+|---|---|
+| Local note storage | Available in the preview |
+| Search, pin, archive | Available in the preview |
+| Account login | Not implemented |
+| Cloud sync | Not implemented |
+| Built-in backup/export | Not implemented |
+| End-to-end encryption | Not implemented |
+| Production-grade database in Flutter app | Not implemented yet |
 
-1. Install the Flutter SDK and the platform tools required by Flutter.
-2. Open a terminal in `flutter_app/`.
-3. Run:
+Uninstalling the app or clearing its storage can remove local notes. **Please do not use this preview as the only copy of important information.** No encryption or cloud security guarantees are being claimed.
+
+## 🛠️ Build from source
+
+### Flutter app (Android and Windows)
+
+You need the Flutter SDK. For Windows builds, you also need Windows desktop support and the Visual Studio C++ desktop development tools.
+
+From the repository root:
 
 ```bash
+cd flutter_app
 flutter pub get
 flutter analyze
 flutter test
 ```
 
-To build an Android APK:
+Build an Android APK:
 
 ```bash
 flutter build apk --release
 ```
 
-To build the Windows desktop version, use a Windows machine with the Visual Studio C++ desktop development tools installed:
+Build the Windows desktop app on Windows:
 
 ```bash
 flutter build windows --release
 ```
 
-The automated workflow is intended to test and build both targets. **A successful CI run is not a substitute for checking the app on real hardware.**
+### Original native Android app
 
-## 🧱 How it's built
+The repository also contains the original Kotlin + Jetpack Compose app under `app/`, using local SQLite storage. Open the repository in Android Studio, let Gradle sync, and run the Android `app` configuration on an emulator or connected phone.
 
-| Part | Technology | Why it is used |
+The Kotlin and Flutter apps currently coexist. The cross-platform preview will only replace the older implementation once its functionality, storage, builds, and user flows have been checked.
+
+## 🧱 Technology
+
+| Area | Technology | Purpose |
 |---|---|---|
-| Original Android app | Kotlin + Jetpack Compose | Native Android UI and platform integration |
-| Cross-platform preview | Flutter + Dart | Shared UI code for Android and Windows |
-| Original local storage | SQLite | Structured, offline note storage |
-| Cross-platform preview storage | Shared Preferences (JSON) | Lightweight prototype persistence; a proper database migration is still needed |
-| Automation | GitHub Actions | Repeatable build and test jobs |
+| Cross-platform UI | Flutter + Dart | Shared Android and Windows interface |
+| Original Android UI | Kotlin + Jetpack Compose | Native Android implementation |
+| Original Android storage | SQLite | Structured local note storage |
+| Flutter preview storage | Shared Preferences + JSON | Lightweight prototype persistence |
+| Build and screenshot automation | GitHub Actions | Repeatable builds and emulator screenshot capture |
 
-The Kotlin app has not magically become Flutter: both implementations are present while the cross-platform version is being validated. The newer preview should not be treated as a stable replacement until its builds, data handling, and user flows have been tested.
-
-## 🗺️ Repository map
+## 🗺️ Project structure
 
 ```text
 .
-├── app/                         # Original Kotlin Android app
-├── flutter_app/                 # Flutter/Dart cross-platform preview
-├── assets/                      # Brand assets and logo
-├── docs/screenshots/             # App screenshots
-├── .github/workflows/            # Automated build and screenshot workflows
-├── CHANGELOG.md                  # Version history
-├── CONTRIBUTING.md               # How to contribute
-├── SECURITY.md                  # Security reporting guidance
-└── LICENSE                       # MIT license
+├── app/                                  # Original Kotlin Android app
+├── flutter_app/
+│   ├── lib/main.dart                     # Flutter app entry and UI
+│   ├── test/                             # Flutter tests
+│   └── pubspec.yaml                      # Flutter dependencies and version
+├── assets/notes-by-lavi-logo.svg         # Project logo
+├── docs/screenshots/                     # Real app screenshots, when captured
+├── .github/workflows/                    # CI, build, and screenshot workflows
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+└── LICENSE
 ```
 
-## 🤝 Help shape the app
+## 🤝 Contribute or send feedback
 
-Found something broken? Have an idea that would make note-taking feel better?
+You don't need to contribute code to help. Tell us what feels confusing, what broke, or what would make note-taking more comfortable.
 
-- **Bug report:** [Open an issue](https://github.com/hmmlavi/Notes/issues/new)
-- **Feature idea or feedback:** [Start a discussion](https://github.com/hmmlavi/Notes/discussions)
-- **Contribute code:** read [CONTRIBUTING.md](CONTRIBUTING.md) first.
-- **Security concern:** follow [SECURITY.md](SECURITY.md).
+- **Bug:** [Open an issue](https://github.com/hmmlavi/Notes/issues/new)
+- **Feature suggestion:** [Start a discussion](https://github.com/hmmlavi/Notes/discussions)
+- **Code contributions:** read [CONTRIBUTING.md](CONTRIBUTING.md)
+- **Security reports:** read [SECURITY.md](SECURITY.md)
 
-Clear reproduction steps and honest feedback are especially helpful.
+Please include clear steps to reproduce a bug and mention which build or device you used.
 
 ## 📄 License
 
-Notes By Lavi is released under the [MIT License](LICENSE).
+This project is available under the [MIT License](LICENSE).
 
 ---
 
 <div align="center">
 
-**Built with care by [Lavi](https://github.com/hmmlavi)**
+**Made with care by [Lavi](https://github.com/hmmlavi)**
 
 *One thought at a time.*
 
