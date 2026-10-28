@@ -8,6 +8,7 @@ permissions:
   contents: write
 jobs:
   build:
+    if: `!contains(github.event.head_commit.message, '[skip ci]')`
     runs-on: windows-latest
     defaults:
       run:
@@ -44,8 +45,73 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add android windows
+          git add flutter_app/android flutter_app/windows
           if (-not (git diff --cached --quiet)) {
             git commit -m "build: generate Flutter platform runners [skip ci]"
             git push
           }
+
+  real-device-screenshot:
+    if: `!contains(github.event.head_commit.message, '[skip ci]')`
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+      - name: Generate Android runner
+        working-directory: flutter_app
+        run: flutter create --platforms=android --project-name notes_by_lavi .
+      - name: Build APK for emulator screenshot
+        working-directory: flutter_app
+        run: |
+          flutter pub get
+          flutter build apk --debug
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          profile: pixel_6
+          script: |
+            adb install -r flutter_app/build/app/outputs/flutter-apk/app-debug.apk
+            adb shell am start -n com.lavi.notes_by_lavi/.MainActivity
+            sleep 8
+            mkdir -p docs/screenshots
+            adb shell screencap -p /sdcard/notes-home.png
+            adb pull /sdcard/notes-home.png docs/screenshots/home-android.png
+      - name: Commit actual emulator screenshot
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/screenshots/home-android.png
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: add actual Android emulator screenshot [skip ci]"
+            git push
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Notes-By-Lavi-Real-Android-Screenshot
+          path: docs/screenshots/home-android.png
+          retention-days: 30
+
+  publish-preview:
+    if: `!contains(github.event.head_commit.message, '[skip ci]')`
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: Notes-By-Lavi-Android-APK
+          path: dist
+      - name: Publish or update preview release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          if gh release view mobile-preview >/dev/null 2>&1; then
+            gh release upload mobile-preview dist/app-release.apk --clobber
+            gh release edit mobile-preview --title "Notes By Lavi — Mobile Preview" --notes "Automated preview build from the latest successful main-branch commit. This is a testing build; export/backup and other roadmap features are not yet complete."
+          else
+            gh release create mobile-preview dist/app-release.apk --target "${{ github.sha }}" --title "Notes By Lavi — Mobile Preview" --prerelease --notes "Automated preview build from the main branch. This is a testing build; export/backup and other roadmap features are not yet complete."
+          fi
