@@ -45,10 +45,11 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add flutter_app/android flutter_app/windows
-          if (-not (git diff --cached --quiet)) {
-            git commit -m "build: generate Flutter platform runners [skip ci]"
-            git push
+          git -C .. pull --rebase origin main
+          git -C .. add flutter_app/android flutter_app/windows
+          if (-not (git -C .. diff --cached --quiet)) {
+            git -C .. commit -m "build: generate Flutter platform runners [skip ci]"
+            git -C .. push
           }
 
   real-device-screenshot:
@@ -84,6 +85,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main
           git add docs/screenshots/home-android.png
           if ! git diff --cached --quiet; then
             git commit -m "docs: add actual Android emulator screenshot [skip ci]"
