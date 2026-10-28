@@ -1,61 +1,163 @@
-# Notes By Lavi
+# ✨ Notes By Lavi
 
-A native Android notes app built with Kotlin and Jetpack Compose. The initial version is offline-first and stores notes locally in SQLite.
+<p align="center">
+  <img src="assets/notes-by-lavi-logo.svg" alt="Notes By Lavi logo" width="128" />
+</p>
 
-## Implemented in this initial version
-- Native Android app (not an HTML wrapper).
-- Create, edit, and automatically save notes locally.
-- Search note title, body, and tags.
-- Pin/unpin notes.
-- Archive notes and move notes to Trash.
-- Restore trashed notes and permanently delete them.
-- Comma-separated tags and word count.
-- Light mode and AMOLED black canvas mode.
-- GitHub Actions builds and uploads a debug APK.
+<h1 align="center">Notes By Lavi</h1>
+<p align="center"><strong>A calmer home for your thoughts.</strong><br/>Capture ideas, keep important things close, and organise your day — privately on your device.</p>
 
-## Project status
-This is an initial functional foundation, not a claim that every planned feature is already implemented. Cloud sync, account login, end-to-end encryption, file attachments, reminders, drawing, import/export, and grammar checking are not implemented in this version.
+<p align="center">
+  <img alt="Platform" src="https://img.shields.io/badge/platform-Android-3DDC84?logo=android&logoColor=white" />
+  <img alt="Language" src="https://img.shields.io/badge/Kotlin-native-7F52FF?logo=kotlin&logoColor=white" />
+  <img alt="UI" src="https://img.shields.io/badge/UI-Jetpack%20Compose-4285F4?logo=jetpackcompose&logoColor=white" />
+  <img alt="Storage" src="https://img.shields.io/badge/storage-local%20SQLite-003B57" />
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-blue.svg" />
+  <img alt="Status" src="https://img.shields.io/badge/status-early%20preview-orange" />
+</p>
 
-## Requirements
-- Android Studio and Android SDK 35
-- JDK 17
-- Gradle 8.9
+<p align="center">
+  <a href="https://github.com/hmmlavi/Notes/releases">Releases</a> ·
+  <a href="https://github.com/hmmlavi/Notes/issues">Report a bug</a> ·
+  <a href="https://github.com/hmmlavi/Notes/discussions">Ideas & feedback</a>
+</p>
 
-Minimum Android version: Android 8.0 (API 26).
+---
 
-## Build
-From the repository root:
+## 🌿 What is Notes By Lavi?
+
+**Notes By Lavi** is an offline-first native Android notes app. It is being built around a simple idea: your notes should feel easy to capture, comfortable to read, and easy to find later.
+
+The current codebase is an **early functional preview**, not the complete long-term vision. The features below are labelled honestly so you can see what works today and what is still planned.
+
+## 🎯 Features available now
+
+| Feature | What it does |
+|---|---|
+| ✍️ Quick notes | Create and edit text notes |
+| 💾 Automatic local saving | Saves edits to the app's private SQLite database |
+| 🔎 Search | Search note titles, body text and tags |
+| 📌 Pinning | Keep important notes near the top |
+| 🗂️ Archive | Hide notes without deleting them |
+| 🗑️ Trash & restore | Move notes to Trash, restore them, or delete permanently |
+| 🏷️ Tags | Add comma-separated tags to notes |
+| 🔢 Word count | See the approximate word count while writing |
+| 🌗 Appearance | Light canvas and pure-black AMOLED canvas option |
+| 📵 Offline-first | Core note storage works locally without an account |
+
+## 🧭 Product roadmap
+
+These are **planned, not currently implemented**. The project will be developed in stages rather than claiming unfinished features are ready.
+
+- [ ] A redesigned, polished note editor with formatting toolbar and better navigation
+- [ ] Custom folders, nested collections, colours and note templates
+- [ ] Checklists, tasks, reminders and calendar view
+- [ ] Attachments, images, PDF/file support and a drawing canvas
+- [ ] Import/export (Markdown, TXT, JSON) and user-controlled backups
+- [ ] Optional accounts and multi-device sync
+- [ ] Security review before any encryption or private-note security claims
+- [ ] Offline writing assistance / grammar suggestions, with explicit user-controlled changes
+- [ ] Windows desktop version with a shared data model and consistent experience
+- [ ] Accessibility improvements, automated UI tests and device testing
+
+### 🛡️ Privacy by design — current behaviour
+
+- Notes are stored in the app's private local SQLite database.
+- The current app does not provide account login or cloud sync.
+- No end-to-end encryption claim is made.
+- Uninstalling the app normally removes its private app data.
+- **There is no built-in export/backup yet. Do not use this preview as the only copy of important information.**
+
+## 📥 Download and install
+
+### Option A — GitHub Release
+Visit the **[Releases page](https://github.com/hmmlavi/Notes/releases)** and download the APK attached to the latest release, if one is published.
+
+### Option B — Build from source
+1. Install Android Studio and the Android SDK.
+2. Install JDK 17.
+3. Clone this repository.
+4. Open the project in Android Studio and allow Gradle to sync.
+5. Run the `app` configuration on an Android device or emulator.
+
+To build from a terminal with Gradle available:
+
 ```bash
 gradle testDebugUnitTest
 gradle assembleDebug
 ```
-APK output: `app/build/outputs/apk/debug/app-debug.apk`.
 
-Install to a connected device:
+The debug APK is generated at:
+
+```
+app/build/outputs/apk/debug/app-debug.apk
+```
+
+Install on a connected device with Android Debug Bridge:
+
 ```bash
 adb install -r app/build/outputs/apk/debug/app-debug.apk
 ```
 
-## Download from GitHub Actions
-1. Open the repository's Actions tab.
-2. Open the latest successful Android CI run.
-3. Download the `Notes-By-Lavi-debug-apk` artifact.
-4. Extract the ZIP and install `app-debug.apk` on your Android device.
+**Compatibility:** Android 8.0 (API 26) or later is configured as the minimum. The debug APK is for testing and is not a Play Store production-signed package. Test on your own device before storing anything important.
 
-This is a debug APK for testing, not a Play Store production-signed build.
+## 🧰 Technology
 
-## GitHub release
-After the CI workflow passes, create and push a version tag:
-```bash
-git tag v1.0.0
-git push origin v1.0.0
+| Layer | Technology | Reason |
+|---|---|---|
+| Android app | Kotlin | First-class Android language and strong null-safety |
+| UI | Jetpack Compose + Material 3 | Native, declarative Android UI |
+| Local persistence | SQLite via Android SQLite APIs | Offline local storage |
+| Build | Gradle Kotlin DSL | Reproducible Android builds |
+| CI | GitHub Actions | Automated test/build workflow |
+
+### Why Kotlin for the current app?
+
+This repository currently targets **native Android**, so Kotlin is a sensible choice: it integrates directly with Android APIs and Jetpack Compose. Adding unrelated languages would not automatically make the app better. A proper Windows version is a separate milestone; we can evaluate Kotlin Multiplatform or Flutter/Dart when implementing that platform instead of pretending this Android-only code already runs on Windows.
+
+## 🧪 Build checks
+
+GitHub Actions is configured to run the Android test/build workflow and upload a debug APK artifact. A successful CI build confirms that the project compiles in that environment; it does **not** replace testing on real devices or prove that every UI flow is bug-free.
+
+## 🗂️ Repository map
+
+```text
+.
+├── .github/workflows/       # CI and release automation
+├── app/
+│   └── src/
+│       ├── main/
+│       │   ├── java/com/lavi/notes/  # Android app and local database
+│       │   └── res/                 # App resources and launcher icon
+│       └── test/                    # Unit tests
+├── assets/                  # Project branding
+├── CHANGELOG.md
+├── CONTRIBUTING.md
+├── SECURITY.md
+├── LICENSE
+└── README.md
 ```
-The release workflow tests, builds, and attaches the APK to a GitHub Release.
 
-## Storage and privacy
-Notes are stored in the app's private SQLite database on the device. The app does not currently upload notes to a server. Uninstalling the app normally removes its private data. Since export/backup is not yet implemented, do not keep the only copy of important notes in this initial build.
+## 🧑‍💻 Contributing
 
-## License
-MIT. See [LICENSE](LICENSE).
+Bug reports, reproducible steps, accessibility feedback and thoughtful feature proposals are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request. For security-sensitive reports, see [SECURITY.md](SECURITY.md).
 
-Made with care by **Lavi**.
+## 🗺️ Release status
+
+- **Current line:** 1.0.0 early preview
+- **Stability:** Initial functionality; real-device testing still required
+- **Backup/export:** Not available yet
+- **Cloud sync:** Not available yet
+- **Windows app:** Not available yet
+
+See [CHANGELOG.md](CHANGELOG.md) for changes.
+
+## 📜 License
+
+Released under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Made with care by <a href="https://github.com/hmmlavi">Lavi</a> · <strong>Notes By Lavi</strong>
+</p>
