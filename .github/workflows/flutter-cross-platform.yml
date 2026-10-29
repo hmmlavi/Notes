@@ -26,6 +26,9 @@ jobs:
           cache: true
       - name: Generate native Android and Windows runners
         run: flutter create --platforms=android,windows --project-name notes_by_lavi .
+      - name: Set Android app display name
+        shell: pwsh
+        run: (Get-Content android/app/src/main/AndroidManifest.xml -Raw).Replace('notes_by_lavi', 'Notes By Lavi') | Set-Content android/app/src/main/AndroidManifest.xml
       - name: Disable flaky Kotlin incremental cache on Windows runners
         shell: pwsh
         run: Add-Content android/gradle.properties 'kotlin.incremental=false'
@@ -49,6 +52,7 @@ jobs:
           path: flutter_app/build/windows/x64/runner/Release/**
           retention-days: 30
       - name: Save generated platform runners
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
@@ -72,6 +76,9 @@ jobs:
       - name: Generate Android runner
         working-directory: flutter_app
         run: flutter create --platforms=android --project-name notes_by_lavi .
+      - name: Set Android app display name
+        working-directory: flutter_app
+        run: sed -i 's/notes_by_lavi/Notes By Lavi/' android/app/src/main/AndroidManifest.xml
       - name: Build APK for emulator screenshot
         working-directory: flutter_app
         run: |
