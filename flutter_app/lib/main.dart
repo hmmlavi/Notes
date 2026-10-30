@@ -152,8 +152,8 @@ class _NotesHomeState extends State<NotesHome> {
   final TextEditingController searchController = TextEditingController();
 
   Color get foreground => widget.dark ? Colors.white : textInk;
-  Color get surface => widget.dark ? const Color(0xFFF7F5FF) : noteSurface;
-  Color get cardText => textInk;
+  Color get surface => widget.dark ? const Color(0xFF191821) : noteSurface;
+  Color get cardText => widget.dark ? Colors.white : textInk;
 
   List<Note> get visibleNotes {
     final result = widget.notes.where((note) {
@@ -529,12 +529,12 @@ class _NotesHomeState extends State<NotesHome> {
                                               ],
                                             ),
                                             Expanded(
-                                              child: Text(note.body.isEmpty ? 'No additional text' : note.body, maxLines: 2, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 12, height: 1.4, color: Color(0xFF656371))),
+                                              child: Text(note.body.isEmpty ? 'No additional text' : note.body, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: 12, height: 1.4, color: widget.dark ? const Color(0xFFCBC8D6) : const Color(0xFF656371))),
                                             ),
                                             Row(
                                               children: [
                                                 Expanded(child: Text(note.tags.isEmpty ? 'Just now' : note.tags, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(fontSize: 10, color: brandPurple))),
-                                                Text('${note.updated.month}/${note.updated.day}', style: const TextStyle(fontSize: 10, color: Color(0xFF858392))),
+                                                Text('${note.updated.month}/${note.updated.day}', style: TextStyle(fontSize: 10, color: widget.dark ? const Color(0xFFB7B4C3) : const Color(0xFF858392))),
                                               ],
                                             ),
                                           ],
